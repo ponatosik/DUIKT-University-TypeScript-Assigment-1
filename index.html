@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example website</title>
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      .carousel-item {
+            width: 800px;
+            height: 400px;
+            background: center / cover no-repeat;
+      }
+      .carousel-item:hover {
+            transform: scale(1.1)
+      }
+      #hero {
+            background-image: url("https://images.pexels.com/photos/1227513/pexels-photo-1227513.jpeg");
+            background-size: cover;
+      }
+    </style>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Header -->
+    <header class="bg-gray-800 text-white p-6">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">MyBrand</a>
+            <ul class="flex space-x-6">
+                <li><a href="#home" class="hover:text-gray-400">Home</a></li>
+                <li><a href="#about" class="hover:text-gray-400">About</a></li>
+                <li><a href="#services" class="hover:text-gray-400">Services</a></li>
+                <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative bg-blue-500 text-white h-screen flex items-center justify-center">
+        <div class="text-center">
+            <h1 class="text-5xl font-bold mb-4">Welcome to Our Landing Page</h1>
+            <p class="text-xl mb-8">Delivering exceptional experiences with our innovative solutions.</p>
+            <a href="#contact" class="bg-yellow-500 text-gray-800 py-2 px-6 rounded-full hover:bg-yellow-400">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section id="carousel" class="py-16 bg-gray-100">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-8">Our Projects</h2>
+            <div class="relative">
+                <div id="carousel" class="overflow-hidden">
+                    <div class="flex transition-transform duration-500">
+                        <div class="flex">
+                            <div class="carousel-item" style="background-image: url('https://picsum.photos/seed/rand11/800/400');"></div>
+                            <div class="carousel-item" style="background-image: url('https://picsum.photos/seed/rand12/800/400');"></div>
+                            <div class="carousel-item" style="background-image: url('https://picsum.photos/seed/rand13/800/400');"></div>
+                        </div>
+                        <div class="flex">
+                            <div class="carousel-item" style="background-image: url('https://picsum.photos/seed/rand21/800/400');"></div>
+                            <div class="carousel-item" style="background-image: url('https://picsum.photos/seed/rand22/800/400');"></div>
+                            <div class="carousel-item" style="background-image: url('https://picsum.photos/seed/rand23/800/400');"></div>
+                        </div>
+                        <div class="flex">
+                            <div class="carousel-item" style="background-image: url('https://picsum.photos/seed/rand31/800/400');"></div>
+                            <div class="carousel-item" style="background-image: url('https://picsum.photos/seed/rand32/800/400');"></div>
+                        </div>
+                    </div>
+                </div>
+                <button id="prev" class="absolute left-0 h-24 transform -translate-y-48 bg-gray-400 text-black p-2 rounded-full">❮</button>
+                <button id="next" class="absolute right-0 h-24 transform -translate-y-48 bg-gray-400 text-black p-2 rounded-full">❯</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4">About Us</h2>
+            <p class="text-lg mb-8">We are dedicated to providing top-notch services and solutions to our clients, ensuring their satisfaction and success.</p>
+            <a href="#contact" class="bg-blue-500 text-white py-2 px-6 rounded-full hover:bg-blue-400">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-100">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4">Our Services</h2>
+            <div class="flex flex-wrap justify-center">
+                <div class="w-full sm:w-1/2 lg:w-1/3 p-4">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-2">Service 1</h3>
+                        <p class="text-lg mb-4">Description of the first service offered. This includes key features and unique selling points.</p>
+                        <div class="mb-4">
+                            <span class="text-xl font-bold">$100</span>
+                            <span class="text-gray-500 text-sm"> / per hour</span>
+                        </div>
+                        <a href="#contact" class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-400">Learn More</a>
+                    </div>
+                </div>
+                <div class="w-full sm:w-1/2 lg:w-1/3 p-4">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-2">Service 2</h3>
+                        <p class="text-lg mb-4">Description of the second service offered. This includes key features and unique selling points.</p>
+                        <div class="mb-4">
+                            <span class="text-xl font-bold">$200</span>
+                            <span class="text-gray-500 text-sm"> / per project</span>
+                        </div>
+                        <a href="#contact" class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-400">Learn More</a>
+                    </div>
+                </div>
+                <div class="w-full sm:w-1/2 lg:w-1/3 p-4">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-2">Service 3</h3>
+                        <p class="text-lg mb-4">Description of the third service offered. This includes key features and unique selling points.</p>
+                        <div class="mb-4">
+                            <span class="text-xl font-bold">$300</span>
+                            <span class="text-gray-500 text-sm"> / per month</span>
+                        </div>
+                        <a href="#contact" class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-400">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-blue-500 text-white">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4">Contact Us</h2>
+            <p class="text-lg mb-8">We’d love to hear from you. Get in touch with us today!</p>
+            <a href="#" id="contactButton" class="bg-yellow-500 text-gray-800 py-2 px-6 rounded-full hover:bg-yellow-400">Email Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Bondarenko Oleksandr. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Popup Modal -->
+    <div id="popupModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 hidden">
+        <div class="bg-white p-8 rounded-lg w-1/3">
+            <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+            <p class="mb-4">Feel free to drop us a line at <a href="mailto:info@mybrand.com" class="text-blue-500">info@mybrand.com</a>.</p>
+            <button id="closeModal" class="bg-red-500 text-white py-2 px-4 rounded">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Carousel functionality
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        const carousel = document.querySelector('#carousel .flex');
+        let index = 0;
+
+        function showSlide(n) {
+            const totalSlides = 5;
+            if (n >= totalSlides) index = 0;
+            else if (n < 0) index = totalSlides - 1;
+            else index = n;
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        prevButton.addEventListener('click', () => showSlide(index - 1));
+        nextButton.addEventListener('click', () => showSlide(index + 1));
+
+        // Popup modal functionality
+        const contactButton = document.getElementById('contactButton');
+        const popupModal = document.getElementById('popupModal');
+        const closeModal = document.getElementById('closeModal');
+
+        contactButton.addEventListener('click', () => popupModal.classList.remove('hidden'));
+        closeModal.addEventListener('click', () => popupModal.classList.add('hidden'));
+    </script>
+
+</body>
+</html>
