@@ -1,25 +1,19 @@
+import { Carousel } from './carousel';
+import { PopupModal } from './popupModal';
+
 // Carousel functionality
 const prevButton = document.getElementById('prev') as HTMLElement;
 const nextButton = document.getElementById('next') as HTMLElement;
-const carousel = document.querySelector('#carousel .flex') as HTMLElement;
+const carouselElement = document.querySelector('#carousel .flex') as HTMLElement;
 
-let index = 0;
-
-function showSlide(n: number) {
-  const totalSlides = 5;
-  if (n >= totalSlides) index = 0;
-  else if (n < 0) index = totalSlides - 1;
-  else index = n;
-  carousel.style.transform = `translateX(-${index * 100}%)`;
-}
-
-prevButton.addEventListener('click', () => showSlide(index - 1));
-nextButton.addEventListener('click', () => showSlide(index + 1));
+const carousel = new Carousel(carouselElement, prevButton, nextButton, 5);
+console.log(carousel);
 
 // Popup modal functionality
-const contactButton = document.getElementById('contactButton') as HTMLElement;
 const popupModal = document.getElementById('popupModal') as HTMLElement;
+const popupContent = document.getElementById('popupContent') as HTMLElement;
 const closeModal = document.getElementById('closeModal') as HTMLElement;
+const popup = new PopupModal(popupModal, popupContent, closeModal);
 
-contactButton.addEventListener('click', () => popupModal.classList.remove('hidden'));
-closeModal.addEventListener('click', () => popupModal.classList.add('hidden'));
+const contactButton = document.getElementById('contactButton') as HTMLElement;
+contactButton.addEventListener('click', () => popup.showMessage('Email: example.com'));
