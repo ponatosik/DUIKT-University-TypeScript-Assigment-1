@@ -1,5 +1,7 @@
 import { Carousel } from './carousel';
 import { PopupModal } from './popupModal';
+import { ServicePlan } from './servicePlan';
+import { ServicePlanCard } from './servicePlanCard';
 
 // Carousel functionality
 const prevButton = document.getElementById('prev') as HTMLElement;
@@ -17,3 +19,17 @@ const popup = new PopupModal(popupModal, popupContent, closeModal);
 
 const contactButton = document.getElementById('contactButton') as HTMLElement;
 contactButton.addEventListener('click', () => popup.showMessage('Email: example.com'));
+
+const servicePlanElements: HTMLElement[] = [
+  document.getElementById('servicePlan-1') as HTMLElement,
+  document.getElementById('servicePlan-2') as HTMLElement,
+  document.getElementById('servicePlan-3') as HTMLElement
+]
+
+// Fetch service plan data
+const cards = fetch('/mockData/servicePlans.json')
+  .then(async res => res.json())
+  .then(objs => objs as ServicePlan[])
+  .then(plans => plans.map((value, index) =>
+    new ServicePlanCard(value, servicePlanElements[index]!, popup)
+  ));

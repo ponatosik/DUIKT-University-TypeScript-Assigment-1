@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Example website</title>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <style>
       .carousel-item {
             width: 800px;
@@ -19,7 +19,6 @@
             background-size: cover;
       }
     </style>
-
 <body class="bg-gray-100 text-gray-900">
 
     <!-- Header -->
@@ -86,38 +85,38 @@
     <section id="services" class="py-16 bg-gray-100">
         <div class="container mx-auto text-center">
             <h2 class="text-4xl font-bold mb-4">Our Services</h2>
-            <div class="flex flex-wrap justify-center">
+            <div id="servicePlan-1" class="flex flex-wrap justify-center">
                 <div class="w-full sm:w-1/2 lg:w-1/3 p-4">
                     <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <h3 class="text-2xl font-semibold mb-2">Service 1</h3>
-                        <p class="text-lg mb-4">Description of the first service offered. This includes key features and unique selling points.</p>
+                        <h3 class="planName text-2xl font-semibold mb-2">Service 1</h3>
+                        <p class="planDescription text-lg mb-4">Description of the first service offered. This includes key features and unique selling points.</p>
                         <div class="mb-4">
-                            <span class="text-xl font-bold">$100</span>
-                            <span class="text-gray-500 text-sm"> / per hour</span>
+                            <span class="planPrice text-xl font-bold">$100</span>
+                            <span class="planPeriod text-gray-500 text-sm"> / per hour</span>
                         </div>
-                        <a href="#contact" class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-400">Learn More</a>
+                        <a href="#contact" class="planDetailsButton bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-400">Learn More</a>
                     </div>
                 </div>
-                <div class="w-full sm:w-1/2 lg:w-1/3 p-4">
+                <div id="servicePlan-2" class="w-full sm:w-1/2 lg:w-1/3 p-4">
                     <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <h3 class="text-2xl font-semibold mb-2">Service 2</h3>
-                        <p class="text-lg mb-4">Description of the second service offered. This includes key features and unique selling points.</p>
+                        <h3 class="planName text-2xl font-semibold mb-2">Service 2</h3>
+                        <p class="planDescription text-lg mb-4">Description of the second service offered. This includes key features and unique selling points.</p>
                         <div class="mb-4">
-                            <span class="text-xl font-bold">$200</span>
-                            <span class="text-gray-500 text-sm"> / per project</span>
+                            <span class="planPrice text-xl font-bold">$200</span>
+                            <span class="planPeriod text-gray-500 text-sm"> / per project</span>
                         </div>
-                        <a href="#contact" class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-400">Learn More</a>
+                        <a href="#contact" class="planDetailsButton bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-400">Learn More</a>
                     </div>
                 </div>
-                <div class="w-full sm:w-1/2 lg:w-1/3 p-4">
+                <div id="servicePlan-3" class="w-full sm:w-1/2 lg:w-1/3 p-4">
                     <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <h3 class="text-2xl font-semibold mb-2">Service 3</h3>
-                        <p class="text-lg mb-4">Description of the third service offered. This includes key features and unique selling points.</p>
+                        <h3 class="planName text-2xl font-semibold mb-2">Service 3</h3>
+                        <p class="planDescription text-lg mb-4">Description of the third service offered. This includes key features and unique selling points.</p>
                         <div class="mb-4">
-                            <span class="text-xl font-bold">$300</span>
-                            <span class="text-gray-500 text-sm"> / per month</span>
+                            <span class="planPrice text-xl font-bold">$300</span>
+                            <span class="planPeriod text-gray-500 text-sm"> / per month</span>
                         </div>
-                        <a href="#contact" class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-400">Learn More</a>
+                        <a href="#contact" class="planDetailsButton bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-400">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -129,7 +128,7 @@
         <div class="container mx-auto text-center">
             <h2 class="text-4xl font-bold mb-4">Contact Us</h2>
             <p class="text-lg mb-8">We’d love to hear from you. Get in touch with us today!</p>
-            <a href="#" id="contactButton" class="bg-yellow-500 text-gray-800 py-2 px-6 rounded-full hover:bg-yellow-400">Email Us</a>
+            <a id="contactButton" class="bg-yellow-500 text-gray-800 py-2 px-6 rounded-full hover:bg-yellow-400">Email Us</a>
         </div>
     </section>
 
