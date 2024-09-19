@@ -9,7 +9,6 @@ const nextButton = document.getElementById('next') as HTMLElement;
 const carouselElement = document.querySelector('#carousel .flex') as HTMLElement;
 
 const carousel = new Carousel(carouselElement, prevButton, nextButton, 5);
-console.log(carousel);
 
 // Popup modal functionality
 const popupModal = document.getElementById('popupModal') as HTMLElement;
