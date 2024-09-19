@@ -19,7 +19,7 @@ const servicePlanElements = [
   document.getElementById('servicePlan-3')
 ];
 // Fetch service plan data
-const cards = fetch('/mockData/servicePlans.json')
+const cards = fetch('https://raw.githubusercontent.com/ponatosik/DUIKT-University-TypeScript-Assigments/feature/tsconfig/mockData/servicePlans.json')
   .then(async (res) => res.json())
   .then(objs => objs)
   .then(plans => plans.map((value, index) => new ServicePlanCard(value, servicePlanElements[index], popup)));

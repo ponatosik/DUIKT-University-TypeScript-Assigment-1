@@ -26,7 +26,7 @@ const servicePlanElements: HTMLElement[] = [
 ]
 
 // Fetch service plan data
-const cards = fetch('/mockData/servicePlans.json')
+const cards = fetch('https://raw.githubusercontent.com/ponatosik/DUIKT-University-TypeScript-Assigments/feature/tsconfig/mockData/servicePlans.json')
   .then(async res => res.json())
   .then(objs => objs as ServicePlan[])
   .then(plans => plans.map((value, index) =>
