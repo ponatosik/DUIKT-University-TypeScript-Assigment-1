@@ -1,21 +1,10 @@
-import { NUMBER_OF_DAYS } from "../types/day-of-week";
-import { NUMBER_OF_TIMESLOTS } from "../types/time-slot";
+import { NUMBER_OF_DAYS } from "../types/day-of-week.js";
+import { NUMBER_OF_TIMESLOTS } from "../types/time-slot.js";
 export class TimetableService {
     professors = [];
     classrooms = [];
     courses = [];
     schedule = [];
-    addProfessor(professor) {
-        this.professors.push(professor);
-    }
-    addLesson(lesson) {
-        if (this.validateLesson(lesson) == null) {
-            this.schedule.push(lesson);
-        }
-        else {
-            throw new Error("Lesson conflict");
-        }
-    }
     findAvailableClassrooms(timeSlot, dayOfWeek) {
         return this.classrooms
             .filter(classroom => this.isClassroomAvailable(timeSlot, dayOfWeek, classroom))
@@ -73,5 +62,41 @@ export class TimetableService {
     }
     cancelLesson(lesson) {
         this.schedule = this.schedule.filter(lsn => lsn !== lesson);
+        if (this.onUpdate != null)
+            this.onUpdate();
+    }
+    getSchedule() { return this.schedule; }
+    getClassrooms() { return this.classrooms; }
+    getCourses() { return this.courses; }
+    getProfessors() { return this.professors; }
+    // NOTE: This approach is horible, not scalible and causes redundant updates
+    // But I do it to get updates working with vanilla TS -_-
+    // Beeter options (requiring libraries or frameworks):
+    // Event emitters, RxJx, Signals, Runes, or whatever your framework provides...
+    onUpdate = null;
+    addProfessor(professor) {
+        this.professors.push(professor);
+        if (this.onUpdate != null)
+            this.onUpdate();
+    }
+    addClassroom(classroom) {
+        this.classrooms.push(classroom);
+        if (this.onUpdate != null)
+            this.onUpdate();
+    }
+    addCourse(course) {
+        this.courses.push(course);
+        if (this.onUpdate != null)
+            this.onUpdate();
+    }
+    addLesson(lesson) {
+        if (this.validateLesson(lesson) == null) {
+            this.schedule.push(lesson);
+            if (this.onUpdate != null)
+                this.onUpdate();
+        }
+        else {
+            throw new Error("Lesson conflict");
+        }
     }
 }

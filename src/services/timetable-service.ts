@@ -1,29 +1,17 @@
-import { Classroom } from "../types/classroom"
-import { Course } from "../types/course"
-import { CourseType } from "../types/course-type"
-import { DayOfWeek, NUMBER_OF_DAYS } from "../types/day-of-week"
-import { Lesson } from "../types/lesson"
-import { Professor } from "../types/professor"
-import { ScheduleConflict } from "../types/schedule-conflict"
-import { NUMBER_OF_TIMESLOTS, TimeSlot } from "../types/time-slot"
+import { Classroom } from "../types/classroom.js"
+import { Course } from "../types/course.js"
+import { CourseType } from "../types/course-type.js"
+import { DayOfWeek, NUMBER_OF_DAYS } from "../types/day-of-week.js"
+import { Lesson } from "../types/lesson.js"
+import { Professor } from "../types/professor.js"
+import { ScheduleConflict } from "../types/schedule-conflict.js"
+import { NUMBER_OF_TIMESLOTS, TimeSlot } from "../types/time-slot.js"
 
 export class TimetableService {
   private professors: Professor[] = [];
   private classrooms: Classroom[] = [];
   private courses: Course[] = [];
   private schedule: Lesson[] = [];
-
-  public addProfessor(professor: Professor): void {
-    this.professors.push(professor);
-  }
-
-  public addLesson(lesson: Lesson): void {
-    if (this.validateLesson(lesson) == null) {
-      this.schedule.push(lesson);
-    } else {
-      throw new Error("Lesson conflict");
-    }
-  }
 
   public findAvailableClassrooms(timeSlot: TimeSlot, dayOfWeek: DayOfWeek): string[] {
     return this.classrooms
@@ -97,5 +85,43 @@ export class TimetableService {
 
   public cancelLesson(lesson: Lesson): void {
     this.schedule = this.schedule.filter(lsn => lsn !== lesson);
+    if (this.onUpdate != null) this.onUpdate();
+  }
+
+
+  public getSchedule(): ReadonlyArray<Lesson> { return this.schedule; }
+  public getClassrooms(): ReadonlyArray<Classroom> { return this.classrooms; }
+  public getCourses(): ReadonlyArray<Course> { return this.courses; }
+  public getProfessors(): ReadonlyArray<Professor> { return this.professors; }
+
+
+  // NOTE: This approach is horible, not scalible and causes redundant updates
+  // But I do it to get updates working with vanilla TS -_-
+  // Beeter options (requiring libraries or frameworks):
+  // Event emitters, RxJx, Signals, Runes, or whatever your framework provides...
+  public onUpdate: (() => void) | null = null;
+
+  public addProfessor(professor: Professor): void {
+    this.professors.push(professor);
+    if (this.onUpdate != null) this.onUpdate();
+  }
+
+  public addClassroom(classroom: Classroom): void {
+    this.classrooms.push(classroom);
+    if (this.onUpdate != null) this.onUpdate();
+  }
+
+  public addCourse(course: Course): void {
+    this.courses.push(course);
+    if (this.onUpdate != null) this.onUpdate();
+  }
+
+  public addLesson(lesson: Lesson): void {
+    if (this.validateLesson(lesson) == null) {
+      this.schedule.push(lesson);
+      if (this.onUpdate != null) this.onUpdate();
+    } else {
+      throw new Error("Lesson conflict");
+    }
   }
 }

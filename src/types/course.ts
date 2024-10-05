@@ -1,4 +1,4 @@
-import { CourseType } from "./course-type"
+import { CourseType } from "./course-type.js"
 
 export type Course = {
   id: number;

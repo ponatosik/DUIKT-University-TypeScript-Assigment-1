@@ -7,4 +7,14 @@ export type DayOfWeek =
   "Saturday" |
   "Sunday";
 
-export const NUMBER_OF_DAYS = 7;
+export const DAYS_OF_WEEK: ReadonlyArray<DayOfWeek> = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday"
+];
+
+export const NUMBER_OF_DAYS = DAYS_OF_WEEK.length;

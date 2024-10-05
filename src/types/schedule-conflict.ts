@@ -1,4 +1,4 @@
-import { Lesson } from "./lesson"
+import { Lesson } from "./lesson.js"
 
 export type ScheduleConflict = {
   type: "ProfessorConflict" | "ClassroomConflict";
