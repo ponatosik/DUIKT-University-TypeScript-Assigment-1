@@ -14,6 +14,7 @@ export default class professorFormComponent extends Component {
 
   public render(): void {
     this.htmlElement.outerHTML = this.renderToString();
+    this.htmlElement = document.getElementById(this.id)!;
 
     const submitButton = document.getElementById(this.submitButtonId);
     submitButton?.removeEventListener('click', this.handleSubmit);
@@ -42,7 +43,7 @@ export default class professorFormComponent extends Component {
 
   public renderToString(): string {
     return `
-        <div class="bg-white p-6 rounded-lg shadow">
+        <div id=${this.id} class="bg-white p-6 rounded-lg shadow">
             <h2 class="text-xl font-semibold mb-4">Add Teacher</h2>
             <form class="space-y-4">
                 <div>
