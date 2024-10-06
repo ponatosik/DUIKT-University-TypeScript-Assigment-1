@@ -1,7 +1,6 @@
-import Component from "./abstract-component.js";
 import { TimetableService } from "../services/timetable-service.js";
-import { COURSE_TYPES, CourseType } from "../types/course-type.js";
 import { Professor } from "../types/professor.js";
+import Component from "./abstract-component.js";
 
 export default class professorFormComponent extends Component {
   private submitButtonId: string = `${this.id}-submit`;
@@ -17,11 +16,11 @@ export default class professorFormComponent extends Component {
     this.htmlElement = document.getElementById(this.id)!;
 
     const submitButton = document.getElementById(this.submitButtonId);
-    submitButton?.removeEventListener('click', this.handleSubmit);
-    submitButton?.addEventListener('click', this.handleSubmit);
-  }
 
-  private handleSubmit = () => this.addTeacher();
+    const handleSubmit = () => this.addTeacher();
+    submitButton?.removeEventListener('click', handleSubmit);
+    submitButton?.addEventListener('click', handleSubmit);
+  }
 
   public addTeacher(): void {
     const professorNameForm = document.getElementById(this.professorNameFormId) as HTMLInputElement;
@@ -36,9 +35,6 @@ export default class professorFormComponent extends Component {
     }
 
     this.timetableService.addProfessor(professor);
-
-    professorNameForm.value = '';
-    professorDepartmentForm.value = '';
   }
 
   public renderToString(): string {
@@ -56,7 +52,6 @@ export default class professorFormComponent extends Component {
                 </div>
                 <button id="${this.submitButtonId}" type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add Teacher</button>
             </form>
-        </div>
-    `;
+        </div>`;
   }
 }

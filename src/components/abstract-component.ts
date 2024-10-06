@@ -8,11 +8,8 @@ export default abstract class Component {
   constructor(protected htmlElement: HTMLElement) { }
 
   // Generate a random id
-  private _id: string = `${Component.generateHash()}_${Component.getTimeStamp()}}`;
+  private _id: string = `${this.constructor.name}-${Component.generateHash()}`;
   private static generateHash(): string {
-    return Math.random().toString(36).substr(2, 9);
-  }
-  private static getTimeStamp(): number {
-    return new Date().getTime();
+    return Math.random().toString(36).substring(2, 9);
   }
 }

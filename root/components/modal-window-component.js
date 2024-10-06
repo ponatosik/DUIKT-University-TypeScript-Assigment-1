@@ -9,10 +9,10 @@ export default class ModalWindowComponent extends Component {
         this.htmlElement.outerHTML = this.renderToString();
         this.htmlElement = document.getElementById(this.id);
         const closeButton = document.getElementById(this.closeButtonId);
-        closeButton?.removeEventListener('click', this.handleClose);
-        closeButton?.addEventListener('click', this.handleClose);
+        const handleClose = () => this.hideModal();
+        closeButton?.removeEventListener('click', handleClose);
+        closeButton?.addEventListener('click', handleClose);
     }
-    handleClose = () => this.hideModal();
     hideModal() {
         const modal = document.getElementById(this.id);
         modal?.classList.add('hidden');
@@ -30,7 +30,6 @@ export default class ModalWindowComponent extends Component {
               <h2 id ="${this.modalContentId}" class="text-2xl font-bold mb-4" id="modal-content"></h2>
               <button id="${this.closeButtonId}" class="bg-red-500 text-white py-2 px-4 rounded float-right">Ok</button>
           </div>
-      </div>
-    `;
+      </div>`;
     }
 }

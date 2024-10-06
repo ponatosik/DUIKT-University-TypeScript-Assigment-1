@@ -15,6 +15,9 @@ export default class TimetableComponent extends Component {
         const tableRows = TIME_SLOTS
             .map((time, index) => this.renderTimeRow(time, index))
             .join('');
+        const daysHeader = WORKING_DAYS_OF_WEEK
+            .map(day => `<th class="border p-2 bg-gray-100">${day}</th>`)
+            .join('');
         return `
             <div class="bg-white p-6 rounded-lg shadow" id=${this.id}>
                 <h2 class="text-xl font-semibold mb-4">Weekly Timetable</h2>
@@ -23,7 +26,7 @@ export default class TimetableComponent extends Component {
                         <thead>
                             <tr>
                                 <th class="border p-2 bg-gray-100">Time</th>
-                                ${WORKING_DAYS_OF_WEEK.map(day => `<th class="border p-2 bg-gray-100">${day}</th>`).join('')}
+                                ${daysHeader}
                             </tr>
                         </thead>
                         <tbody>
@@ -31,10 +34,9 @@ export default class TimetableComponent extends Component {
                         </tbody>
                     </table>
                 </div>
-            </div>
-    `;
+            </div>`;
     }
-    renderTimeRow = (time, index) => {
+    renderTimeRow = (time) => {
         const timetable = this.timetableService.getSchedule();
         const cells = WORKING_DAYS_OF_WEEK.map(day => {
             const lessons = timetable.filter(lsn => lsn.timeSlot == time && lsn.dayOfWeek == day);
@@ -44,8 +46,7 @@ export default class TimetableComponent extends Component {
             <tr>
                 <td class="border p-2 font-medium">${time}</td>
                 ${cells}
-            </tr>
-        `;
+            </tr>`;
     };
     renderTimeSlot = (lessons) => {
         return lessons.map(lesson => {

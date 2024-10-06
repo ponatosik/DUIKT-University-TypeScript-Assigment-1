@@ -18,8 +18,7 @@ export default class ClassroomFormComponent extends Component {
                 <div class="space-y-4">
                     ${classroomSections}
                 </div>
-            </div>
-    `;
+            </div>`;
     }
     renderClassromStatistic(classroom) {
         const utilizetion = this.timetableService.getClassroomUtilization(classroom);
@@ -33,7 +32,6 @@ export default class ClassroomFormComponent extends Component {
                     </div>
                 </div>
                 <div class="w-16 text-right font-medium">${unitizationPercent}</div>
-            </div>
-    `;
+            </div>`;
     }
 }

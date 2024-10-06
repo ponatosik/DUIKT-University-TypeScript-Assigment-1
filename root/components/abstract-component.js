@@ -10,11 +10,8 @@ export default class Component {
         this.htmlElement = htmlElement;
     }
     // Generate a random id
-    _id = `${Component.generateHash()}_${Component.getTimeStamp()}}`;
+    _id = `${this.constructor.name}-${Component.generateHash()}`;
     static generateHash() {
-        return Math.random().toString(36).substr(2, 9);
-    }
-    static getTimeStamp() {
-        return new Date().getTime();
+        return Math.random().toString(36).substring(2, 9);
     }
 }

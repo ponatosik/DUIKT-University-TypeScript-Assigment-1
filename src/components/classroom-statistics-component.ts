@@ -22,8 +22,7 @@ export default class ClassroomFormComponent extends Component {
                 <div class="space-y-4">
                     ${classroomSections}
                 </div>
-            </div>
-    `;
+            </div>`;
   }
 
   private renderClassromStatistic(classroom: Classroom): string {
@@ -39,7 +38,6 @@ export default class ClassroomFormComponent extends Component {
                     </div>
                 </div>
                 <div class="w-16 text-right font-medium">${unitizationPercent}</div>
-            </div>
-    `;
+            </div>`;
   }
 }

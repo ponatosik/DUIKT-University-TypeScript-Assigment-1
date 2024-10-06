@@ -1,15 +1,15 @@
-import { TimetableService } from "./services/timetable-service.js"
-import TimetableComponent from "./components/timetable-component.js"
-import CourseFormComponent from "./components/course-form-component.js"
-import ProfessorFormComponent from "./components/professor-form-component.js"
-import LessonFormComponent from "./components/lesson-form-component.js"
-import ClassroomStatisticsComponent from "./components/classroom-statistics-component.js"
-import ModalComponent from "./components/modal-window-component.js"
-import { Course } from "./types/course.js";
-import { Classroom } from "./types/classroom.js";
-import { Professor } from "./types/professor.js";
-import { Lesson } from "./types/lesson.js";
 import Component from "./components/abstract-component.js"
+import ClassroomStatisticsComponent from "./components/classroom-statistics-component.js"
+import CourseFormComponent from "./components/course-form-component.js"
+import LessonFormComponent from "./components/lesson-form-component.js"
+import ModalComponent from "./components/modal-window-component.js"
+import ProfessorFormComponent from "./components/professor-form-component.js"
+import TimetableComponent from "./components/timetable-component.js"
+import { TimetableService } from "./services/timetable-service.js"
+import { Classroom } from "./types/classroom.js"
+import { Course } from "./types/course.js"
+import { Lesson } from "./types/lesson.js"
+import { Professor } from "./types/professor.js"
 
 const timetableService = new TimetableService();
 

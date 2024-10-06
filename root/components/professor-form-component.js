@@ -12,10 +12,10 @@ export default class professorFormComponent extends Component {
         this.htmlElement.outerHTML = this.renderToString();
         this.htmlElement = document.getElementById(this.id);
         const submitButton = document.getElementById(this.submitButtonId);
-        submitButton?.removeEventListener('click', this.handleSubmit);
-        submitButton?.addEventListener('click', this.handleSubmit);
+        const handleSubmit = () => this.addTeacher();
+        submitButton?.removeEventListener('click', handleSubmit);
+        submitButton?.addEventListener('click', handleSubmit);
     }
-    handleSubmit = () => this.addTeacher();
     addTeacher() {
         const professorNameForm = document.getElementById(this.professorNameFormId);
         const professorDepartmentForm = document.getElementById(this.professorDepartmentFormId);
@@ -26,8 +26,6 @@ export default class professorFormComponent extends Component {
             department: professorDepartmentForm.value
         };
         this.timetableService.addProfessor(professor);
-        professorNameForm.value = '';
-        professorDepartmentForm.value = '';
     }
     renderToString() {
         return `
@@ -44,7 +42,6 @@ export default class professorFormComponent extends Component {
                 </div>
                 <button id="${this.submitButtonId}" type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add Teacher</button>
             </form>
-        </div>
-    `;
+        </div>`;
     }
 }
