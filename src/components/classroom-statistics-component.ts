@@ -16,7 +16,6 @@ export default class ClassroomFormComponent extends Component {
     const classrooms = this.timetableService.getClassrooms();
     const classroomSections = classrooms.map(room => this.renderClassromStatistic(room)).join('\n');
 
-
     return `
             <div class="bg-white p-6 rounded-lg shadow" id="${this.id}">
                 <h2 class="text-xl font-semibold mb-4">Classroom Utilization</h2>

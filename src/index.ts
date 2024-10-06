@@ -4,6 +4,7 @@ import CourseFormComponent from "./components/course-form-component.js"
 import ProfessorFormComponent from "./components/professor-form-component.js"
 import LessonFormComponent from "./components/lesson-form-component.js"
 import ClassroomStatisticsComponent from "./components/classroom-statistics-component.js"
+import ModalComponent from "./components/modal-window-component.js"
 import { Course } from "./types/course.js";
 import { Classroom } from "./types/classroom.js";
 import { Professor } from "./types/professor.js";
@@ -76,13 +77,17 @@ const courseFormElement = document.querySelector('#course-form-component') as HT
 const professorFormElement = document.querySelector('#professor-form-component') as HTMLElement;
 const lessonFormElement = document.querySelector('#lesson-form-component') as HTMLElement;
 const classromStatisticsElement = document.querySelector('#classroom-statistics-component') as HTMLElement;
+const modalWindowElement = document.querySelector('#modal-component') as HTMLElement;
+
+const modalComponent = new ModalComponent(modalWindowElement);
 
 const components: Component[] = [
   new TimetableComponent(timetableElement, timetableService),
   new CourseFormComponent(courseFormElement, timetableService),
   new ProfessorFormComponent(professorFormElement, timetableService),
-  new LessonFormComponent(lessonFormElement, timetableService),
-  new ClassroomStatisticsComponent(classromStatisticsElement, timetableService)];
+  new LessonFormComponent(lessonFormElement, timetableService, modalComponent),
+  new ClassroomStatisticsComponent(classromStatisticsElement, timetableService),
+  modalComponent];
 
 components.forEach(component => component.render());
 timetableService.onUpdate = () => components.forEach(component => component.update());

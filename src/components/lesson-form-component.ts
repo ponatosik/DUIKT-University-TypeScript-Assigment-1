@@ -3,6 +3,7 @@ import { TimetableService } from "../services/timetable-service.js";
 import { Lesson } from "../types/lesson.js";
 import { DayOfWeek, WORKING_DAYS_OF_WEEK } from "../types/day-of-week.js";
 import { TIME_SLOTS, TimeSlot } from "../types/time-slot.js";
+import ModalWindowComponent from "./modal-window-component.js";
 
 export default class LessonFormComponent extends Component {
   private submitButtonId: string = `${this.id}-submit`;
@@ -12,7 +13,7 @@ export default class LessonFormComponent extends Component {
   private lessonDayFormId: string = `${this.id}-day`;
   private lessonTimeFormId: string = `${this.id}-time`;
 
-  constructor(htmlElement: HTMLElement, private timetableService: TimetableService) {
+  constructor(htmlElement: HTMLElement, private timetableService: TimetableService, private modal: ModalWindowComponent) {
     super(htmlElement);
   }
 
@@ -42,7 +43,19 @@ export default class LessonFormComponent extends Component {
       timeSlot: lessonTime.value as TimeSlot,
     }
 
-    console.log(lesson);
+    const lessonConflict = this.timetableService.validateLesson(lesson);
+    if (lessonConflict) {
+      const professor = this.timetableService.getProfessors().find(prof => prof.id == lesson.professorId);
+      const meessage = `
+        ${lessonConflict.type} for lesson
+        ${lesson.dayOfWeek} (${lesson.timeSlot}),
+        professor: ${professor?.name},
+        classroom: ${lesson.classroomNumber}
+      `;
+
+      this.modal.showMessage(meessage);
+      return;
+    }
 
 
     this.timetableService.addLesson(lesson);
