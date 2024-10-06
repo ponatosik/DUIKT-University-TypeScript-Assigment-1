@@ -23,7 +23,7 @@ export class TimetableService {
     validateLesson(lesson) {
         const lessonsInSameTime = this.schedule
             .filter(lsn => lsn.timeSlot == lesson.timeSlot && lsn.dayOfWeek == lesson.dayOfWeek);
-        if (lessonsInSameTime.find(lsn => lsn.courseId == lesson.courseId)) {
+        if (lessonsInSameTime.find(lsn => lsn.classroomNumber == lesson.classroomNumber)) {
             return { type: "ClassroomConflict", lessonDetatil: lesson };
         }
         if (lessonsInSameTime.find(lsn => lsn.professorId == lesson.professorId)) {

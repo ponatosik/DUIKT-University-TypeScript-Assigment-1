@@ -43,7 +43,7 @@ const lessons = [
     { timeSlot: '08:00-09:35', dayOfWeek: 'Tuesday', classroomNumber: '113', professorId: 6, courseId: 4 },
     { timeSlot: '11:45-13:20', dayOfWeek: 'Monday', classroomNumber: '213-K', professorId: 6, courseId: 4 },
     { timeSlot: '08:00-09:35', dayOfWeek: 'Thursday', classroomNumber: '111', professorId: 4, courseId: 5 },
-    { timeSlot: '11:45-13:20', dayOfWeek: 'Tuesday', classroomNumber: '001', professorId: 5, courseId: 5 },
+    { timeSlot: '11:45-13:20', dayOfWeek: 'Tuesday', classroomNumber: '113', professorId: 5, courseId: 5 },
     { timeSlot: '08:00-09:35', dayOfWeek: 'Friday', classroomNumber: 'Online', professorId: 5, courseId: 5 },
     { timeSlot: '08:00-09:35', dayOfWeek: 'Friday', classroomNumber: '213-K', professorId: 7, courseId: 6 },
     { timeSlot: '11:45-13:20', dayOfWeek: 'Monday', classroomNumber: '111', professorId: 7, courseId: 6 },
