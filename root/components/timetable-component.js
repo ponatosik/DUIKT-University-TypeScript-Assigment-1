@@ -1,4 +1,4 @@
-import { DAYS_OF_WEEK } from "../types/day-of-week.js";
+import { WORKING_DAYS_OF_WEEK } from "../types/day-of-week.js";
 import { TIME_SLOTS } from "../types/time-slot.js";
 import Component from "./abstract-component.js";
 export default class TimetableComponent extends Component {
@@ -23,7 +23,7 @@ export default class TimetableComponent extends Component {
                         <thead>
                             <tr>
                                 <th class="border p-2 bg-gray-100">Time</th>
-                                ${DAYS_OF_WEEK.map(day => `<th class="border p-2 bg-gray-100">${day}</th>`).join('')}
+                                ${WORKING_DAYS_OF_WEEK.map(day => `<th class="border p-2 bg-gray-100">${day}</th>`).join('')}
                             </tr>
                         </thead>
                         <tbody>
@@ -36,9 +36,9 @@ export default class TimetableComponent extends Component {
     }
     renderTimeRow = (time, index) => {
         const timetable = this.timetableService.getSchedule();
-        const cells = DAYS_OF_WEEK.map(day => {
-            const lesson = timetable.find(lsn => lsn.timeSlot == time && lsn.dayOfWeek == day) ?? null;
-            return `<td class="border p-2">${this.renderLesson(lesson)}</td>`;
+        const cells = WORKING_DAYS_OF_WEEK.map(day => {
+            const lessons = timetable.filter(lsn => lsn.timeSlot == time && lsn.dayOfWeek == day);
+            return `<td class="border p-2">${this.renderTimeSlot(lessons)}</td>`;
         }).join('');
         return `
             <tr>
@@ -47,12 +47,12 @@ export default class TimetableComponent extends Component {
             </tr>
         `;
     };
-    renderLesson = (lesson) => {
-        if (!lesson)
-            return '';
-        const classroom = this.timetableService.getClassrooms().find(cls => cls.number == lesson.classroomNumber) ?? null;
-        const professor = this.timetableService.getProfessors().find(prof => prof.id == lesson.professorId) ?? null;
-        const course = this.timetableService.getCourses().find(crs => crs.id == lesson.courseId) ?? null;
-        return `${course?.name} - (${classroom?.number})<br><span class="text-sm text-gray-500">${professor?.name}</span>`;
+    renderTimeSlot = (lessons) => {
+        return lessons.map(lesson => {
+            const classroom = this.timetableService.getClassrooms().find(cls => cls.number == lesson.classroomNumber) ?? null;
+            const professor = this.timetableService.getProfessors().find(prof => prof.id == lesson.professorId) ?? null;
+            const course = this.timetableService.getCourses().find(crs => crs.id == lesson.courseId) ?? null;
+            return `${course?.name} - (${classroom?.number})<br><span class="text-sm text-gray-500">${professor?.name}</span>`;
+        }).join('<hr>');
     };
 }

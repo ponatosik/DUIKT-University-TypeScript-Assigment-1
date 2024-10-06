@@ -37,17 +37,17 @@ const lessons = [
     { timeSlot: '15:15-16:50', dayOfWeek: 'Wednesday', classroomNumber: '113', professorId: 2, courseId: 1 },
     { timeSlot: '13:30-15:05', dayOfWeek: 'Friday', classroomNumber: 'Online', professorId: 1, courseId: 1 },
     { timeSlot: '13:30-15:05', dayOfWeek: 'Tuesday', classroomNumber: '001', professorId: 3, courseId: 2 },
-    { timeSlot: '11:45-13:20', dayOfWeek: 'Monday', classroomNumber: 'Online', professorId: 3, courseId: 2 },
+    { timeSlot: '11:45-13:20', dayOfWeek: 'Wednesday', classroomNumber: 'Online', professorId: 3, courseId: 2 },
     { timeSlot: '09:45-11:20', dayOfWeek: 'Wednesday', classroomNumber: '123-2', professorId: 4, courseId: 3 },
     { timeSlot: '15:15-16:50', dayOfWeek: 'Friday', classroomNumber: 'Online', professorId: 4, courseId: 3 },
     { timeSlot: '08:00-09:35', dayOfWeek: 'Tuesday', classroomNumber: '113', professorId: 6, courseId: 4 },
     { timeSlot: '11:45-13:20', dayOfWeek: 'Monday', classroomNumber: '213-K', professorId: 6, courseId: 4 },
     { timeSlot: '08:00-09:35', dayOfWeek: 'Thursday', classroomNumber: '111', professorId: 4, courseId: 5 },
     { timeSlot: '11:45-13:20', dayOfWeek: 'Tuesday', classroomNumber: '001', professorId: 5, courseId: 5 },
+    { timeSlot: '08:00-09:35', dayOfWeek: 'Friday', classroomNumber: 'Online', professorId: 5, courseId: 5 },
     { timeSlot: '08:00-09:35', dayOfWeek: 'Friday', classroomNumber: '213-K', professorId: 7, courseId: 6 },
     { timeSlot: '11:45-13:20', dayOfWeek: 'Monday', classroomNumber: '111', professorId: 7, courseId: 6 },
-    { timeSlot: '08:00-09:35', dayOfWeek: 'Thursday', classroomNumber: 'Online', professorId: 5, courseId: 7 },
-    { timeSlot: '11:45-13:20', dayOfWeek: 'Tuesday', classroomNumber: '123', professorId: 6, courseId: 7 },
+    { timeSlot: '11:45-13:20', dayOfWeek: 'Friday', classroomNumber: '123-2', professorId: 6, courseId: 6 }
 ];
 courses.forEach(course => timetableService.addCourse(course));
 classrooms.forEach(classroom => timetableService.addClassroom(classroom));

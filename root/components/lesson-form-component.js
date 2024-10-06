@@ -1,5 +1,5 @@
 import Component from "./abstract-component.js";
-import { DAYS_OF_WEEK } from "../types/day-of-week.js";
+import { WORKING_DAYS_OF_WEEK } from "../types/day-of-week.js";
 import { TIME_SLOTS } from "../types/time-slot.js";
 export default class LessonFormComponent extends Component {
     timetableService;
@@ -75,7 +75,7 @@ export default class LessonFormComponent extends Component {
                         <div>
                             <label class="block text-sm font-medium mb-1" for="${this.lessonDayFormId}">Day</label>
                             <select id="${this.lessonDayFormId}" class="w-full p-2 border rounded">
-                                ${DAYS_OF_WEEK.map(day => `<option>${day}</option>`).join('')}
+                                ${WORKING_DAYS_OF_WEEK.map(day => `<option>${day}</option>`).join('')}
                             </select>
                         </div>
                         <div>

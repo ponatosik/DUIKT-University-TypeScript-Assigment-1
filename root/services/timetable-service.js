@@ -1,4 +1,4 @@
-import { NUMBER_OF_DAYS } from "../types/day-of-week.js";
+import { NUMBER_OF_WORKING_DAYS } from "../types/day-of-week.js";
 import { NUMBER_OF_TIMESLOTS } from "../types/time-slot.js";
 export class TimetableService {
     professors = [];
@@ -35,7 +35,7 @@ export class TimetableService {
         const numberOfLessons = this.schedule
             .filter(lesson => lesson.classroomNumber == classroom.number)
             .length;
-        const maximumNumberOfLessons = NUMBER_OF_TIMESLOTS * NUMBER_OF_DAYS;
+        const maximumNumberOfLessons = NUMBER_OF_TIMESLOTS * NUMBER_OF_WORKING_DAYS;
         return numberOfLessons / maximumNumberOfLessons;
     }
     getMostPopularCourseType() {
