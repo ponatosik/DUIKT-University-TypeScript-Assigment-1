@@ -3,6 +3,7 @@ import TimetableComponent from "./components/timetable-component.js";
 import CourseFormComponent from "./components/course-form-component.js";
 import ProfessorFormComponent from "./components/professor-form-component.js";
 import LessonFormComponent from "./components/lesson-form-component.js";
+import ClassroomStatisticsComponent from "./components/classroom-statistics-component.js";
 const timetableService = new TimetableService();
 const courses = [
     { id: 1, name: 'OOP', type: "Lab" },
@@ -56,11 +57,13 @@ const timetableElement = document.querySelector('#timetable-component');
 const courseFormElement = document.querySelector('#course-form-component');
 const professorFormElement = document.querySelector('#professor-form-component');
 const lessonFormElement = document.querySelector('#lesson-form-component');
+const classromStatisticsElement = document.querySelector('#classroom-statistics-component');
 const components = [
     new TimetableComponent(timetableElement, timetableService),
     new CourseFormComponent(courseFormElement, timetableService),
     new ProfessorFormComponent(professorFormElement, timetableService),
-    new LessonFormComponent(lessonFormElement, timetableService)
+    new LessonFormComponent(lessonFormElement, timetableService),
+    new ClassroomStatisticsComponent(classromStatisticsElement, timetableService)
 ];
 components.forEach(component => component.render());
 timetableService.onUpdate = () => components.forEach(component => component.update());

@@ -16,8 +16,7 @@ export default class TimetableComponent extends Component {
             .map((time, index) => this.renderTimeRow(time, index))
             .join('');
         return `
-        <div class="w-full md:w-2/3" id="${this.id}">
-            <div class="bg-white p-6 rounded-lg shadow">
+            <div class="bg-white p-6 rounded-lg shadow" id=${this.id}>
                 <h2 class="text-xl font-semibold mb-4">Weekly Timetable</h2>
                 <div class="overflow-x-auto">
                     <table class="w-full border-collapse">
@@ -33,7 +32,6 @@ export default class TimetableComponent extends Component {
                     </table>
                 </div>
             </div>
-        </div>
     `;
     }
     renderTimeRow = (time, index) => {
