@@ -23,12 +23,14 @@ const servicePlanElements: HTMLElement[] = [
   document.getElementById('servicePlan-1') as HTMLElement,
   document.getElementById('servicePlan-2') as HTMLElement,
   document.getElementById('servicePlan-3') as HTMLElement
-]
+];
 
 // Fetch service plan data
-const cards = fetch('https://raw.githubusercontent.com/ponatosik/DUIKT-University-TypeScript-Assigments/feature/tsconfig/mockData/servicePlans.json')
-  .then(async res => res.json())
-  .then(objs => objs as ServicePlan[])
-  .then(plans => plans.map((value, index) =>
-    new ServicePlanCard(value, servicePlanElements[index]!, popup)
-  ));
+const cards = fetch(
+  'https://raw.githubusercontent.com/ponatosik/DUIKT-University-TypeScript-Assigments/feature/tsconfig/mockData/servicePlans.json'
+)
+  .then(async (res) => res.json())
+  .then((objs) => objs as ServicePlan[])
+  .then((plans) =>
+    plans.map((value, index) => new ServicePlanCard(value, servicePlanElements[index]!, popup))
+  );

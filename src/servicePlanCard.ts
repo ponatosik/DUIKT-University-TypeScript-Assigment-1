@@ -1,12 +1,8 @@
-import { ServicePlan } from "./servicePlan";
-import { PopupModal } from "./popupModal";
+import { ServicePlan } from './servicePlan';
+import { PopupModal } from './popupModal';
 
 export class ServicePlanCard {
-  constructor(
-    servicePlan: ServicePlan,
-    card: HTMLElement,
-    popupModal: PopupModal
-  ) {
+  constructor(servicePlan: ServicePlan, card: HTMLElement, popupModal: PopupModal) {
     const planName = card.querySelector('.planName') as HTMLElement;
     const planDescription = card.querySelector('.planDescription') as HTMLElement;
     const planPrice = card.querySelector('.planPrice') as HTMLElement;
