@@ -35,3 +35,8 @@ This repository contains the homework assignment for the TypeScript course at [D
   * getMostPopularCourseType(): CourseType
   * reassignClassroom(lessonId: number, newClassroomNumber: string): boolean
   * cancelLesson(lessonId: number): void
+
+## Task 3 [lab] (installing linter)
+* Install and configure Pretier
+* Install and configure ESLint
+* Install Husky and configure lint-staged
