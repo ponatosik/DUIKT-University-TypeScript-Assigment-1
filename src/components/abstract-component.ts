@@ -1,11 +1,13 @@
 export default abstract class Component {
-  public get id(): string { return this._id };
+  public get id(): string {
+    return this._id;
+  }
   public abstract render(): void;
   public update(): void {
     this.render();
-  };
+  }
 
-  constructor(protected htmlElement: HTMLElement) { }
+  constructor(protected htmlElement: HTMLElement) {}
 
   // Generate a random id
   private _id: string = `${this.constructor.name}-${Component.generateHash()}`;

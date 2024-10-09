@@ -1,4 +1,4 @@
-import Component from "./abstract-component.js";
+import Component from './abstract-component.js';
 export default class professorFormComponent extends Component {
     timetableService;
     submitButtonId = `${this.id}-submit`;

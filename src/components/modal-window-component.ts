@@ -1,4 +1,4 @@
-import Component from "./abstract-component.js";
+import Component from './abstract-component.js';
 
 export default class ModalWindowComponent extends Component {
   private closeButtonId: string = `${this.id}-submit`;
@@ -18,7 +18,6 @@ export default class ModalWindowComponent extends Component {
     closeButton?.removeEventListener('click', handleClose);
     closeButton?.addEventListener('click', handleClose);
   }
-
 
   public hideModal(): void {
     const modal = document.getElementById(this.id);
@@ -43,4 +42,3 @@ export default class ModalWindowComponent extends Component {
       </div>`;
   }
 }
-

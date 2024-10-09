@@ -1,13 +1,16 @@
-import { TimetableService } from "../services/timetable-service.js";
-import { Professor } from "../types/professor.js";
-import Component from "./abstract-component.js";
+import { TimetableService } from '../services/timetable-service.js';
+import { Professor } from '../types/professor.js';
+import Component from './abstract-component.js';
 
 export default class professorFormComponent extends Component {
   private submitButtonId: string = `${this.id}-submit`;
   private professorNameFormId: string = `${this.id}-name`;
   private professorDepartmentFormId: string = `${this.id}-department`;
 
-  constructor(htmlElement: HTMLElement, private timetableService: TimetableService) {
+  constructor(
+    htmlElement: HTMLElement,
+    private timetableService: TimetableService
+  ) {
     super(htmlElement);
   }
 
@@ -24,7 +27,9 @@ export default class professorFormComponent extends Component {
 
   public addTeacher(): void {
     const professorNameForm = document.getElementById(this.professorNameFormId) as HTMLInputElement;
-    const professorDepartmentForm = document.getElementById(this.professorDepartmentFormId) as HTMLInputElement;
+    const professorDepartmentForm = document.getElementById(
+      this.professorDepartmentFormId
+    ) as HTMLInputElement;
 
     const id = this.timetableService.getProfessors().length + 1;
 
@@ -32,7 +37,7 @@ export default class professorFormComponent extends Component {
       id: id,
       name: professorNameForm.value,
       department: professorDepartmentForm.value
-    }
+    };
 
     this.timetableService.addProfessor(professor);
   }

@@ -1,10 +1,10 @@
-import Component from "./abstract-component.js";
-import { TimetableService } from "../services/timetable-service.js";
-import { Lesson } from "../types/lesson.js";
-import { DayOfWeek, WORKING_DAYS_OF_WEEK } from "../types/day-of-week.js";
-import { TIME_SLOTS, TimeSlot } from "../types/time-slot.js";
-import ModalWindowComponent from "./modal-window-component.js";
-import { ScheduleConflict } from "../types/schedule-conflict.js";
+import Component from './abstract-component.js';
+import { TimetableService } from '../services/timetable-service.js';
+import { Lesson } from '../types/lesson.js';
+import { DayOfWeek, WORKING_DAYS_OF_WEEK } from '../types/day-of-week.js';
+import { TIME_SLOTS, TimeSlot } from '../types/time-slot.js';
+import ModalWindowComponent from './modal-window-component.js';
+import { ScheduleConflict } from '../types/schedule-conflict.js';
 
 export default class LessonFormComponent extends Component {
   private submitButtonId: string = `${this.id}-submit`;
@@ -14,7 +14,11 @@ export default class LessonFormComponent extends Component {
   private lessonDayFormId: string = `${this.id}-day`;
   private lessonTimeFormId: string = `${this.id}-time`;
 
-  constructor(htmlElement: HTMLElement, private timetableService: TimetableService, private modal: ModalWindowComponent) {
+  constructor(
+    htmlElement: HTMLElement,
+    private timetableService: TimetableService,
+    private modal: ModalWindowComponent
+  ) {
     super(htmlElement);
   }
 
@@ -29,10 +33,11 @@ export default class LessonFormComponent extends Component {
     submitButton?.addEventListener('click', handleSubmit);
   }
 
-
   public addLesson(): void {
     const lessonCourseId = document.getElementById(this.lessonCourseFormId) as HTMLInputElement;
-    const lessonProfessorId = document.getElementById(this.lessonProfessorFormId) as HTMLInputElement;
+    const lessonProfessorId = document.getElementById(
+      this.lessonProfessorFormId
+    ) as HTMLInputElement;
     const lessonRoomId = document.getElementById(this.lessonRoomFormId) as HTMLInputElement;
     const lessonDay = document.getElementById(this.lessonDayFormId) as HTMLInputElement;
     const lessonTime = document.getElementById(this.lessonTimeFormId) as HTMLInputElement;
@@ -42,8 +47,8 @@ export default class LessonFormComponent extends Component {
       professorId: parseInt(lessonProfessorId.value),
       classroomNumber: lessonRoomId.value,
       dayOfWeek: lessonDay.value as DayOfWeek,
-      timeSlot: lessonTime.value as TimeSlot,
-    }
+      timeSlot: lessonTime.value as TimeSlot
+    };
 
     const lessonConflict = this.timetableService.validateLesson(lesson);
     if (lessonConflict) {
@@ -56,7 +61,9 @@ export default class LessonFormComponent extends Component {
 
   private handleSceduleConflict(confilict: ScheduleConflict) {
     const lesson = confilict.lessonDetatil;
-    const professor = this.timetableService.getProfessors().find(prof => prof.id == lesson.professorId);
+    const professor = this.timetableService
+      .getProfessors()
+      .find((prof) => prof.id == lesson.professorId);
 
     const meessage = `
         ${confilict.type} for lesson
@@ -68,25 +75,26 @@ export default class LessonFormComponent extends Component {
   }
 
   public renderToString(): string {
-    const renderedCoursesOptions = this.timetableService.getCourses()
-      .map(course => `<option value="${course.id}">${course.name}</option>`)
+    const renderedCoursesOptions = this.timetableService
+      .getCourses()
+      .map((course) => `<option value="${course.id}">${course.name}</option>`)
       .join('');
 
-    const renderedClassroomsOptions = this.timetableService.getClassrooms()
-      .map(cls => `<option>${cls.number}</option>`)
+    const renderedClassroomsOptions = this.timetableService
+      .getClassrooms()
+      .map((cls) => `<option>${cls.number}</option>`)
       .join('');
 
-    const renderedProfessorsOptions = this.timetableService.getProfessors()
-      .map(professor => `<option value="${professor.id}">${professor.name}</option>`)
+    const renderedProfessorsOptions = this.timetableService
+      .getProfessors()
+      .map((professor) => `<option value="${professor.id}">${professor.name}</option>`)
       .join('');
 
-    const renderedDaysOptions = WORKING_DAYS_OF_WEEK
-      .map(day => `<option>${day}</option>`)
-      .join('');
+    const renderedDaysOptions = WORKING_DAYS_OF_WEEK.map((day) => `<option>${day}</option>`).join(
+      ''
+    );
 
-    const renderedTimeOptions = TIME_SLOTS
-      .map(time => `<option>${time}</option>`)
-      .join('');
+    const renderedTimeOptions = TIME_SLOTS.map((time) => `<option>${time}</option>`).join('');
 
     return `
             <div class="bg-white p-6 rounded-lg shadow" id="${this.id}">

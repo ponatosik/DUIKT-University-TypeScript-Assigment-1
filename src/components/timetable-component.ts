@@ -1,11 +1,14 @@
-import { TimetableService } from "../services/timetable-service.js";
-import { WORKING_DAYS_OF_WEEK } from "../types/day-of-week.js";
-import { Lesson } from "../types/lesson.js";
-import { TIME_SLOTS } from "../types/time-slot.js";
-import Component from "./abstract-component.js";
+import { TimetableService } from '../services/timetable-service.js';
+import { WORKING_DAYS_OF_WEEK } from '../types/day-of-week.js';
+import { Lesson } from '../types/lesson.js';
+import { TIME_SLOTS } from '../types/time-slot.js';
+import Component from './abstract-component.js';
 
 export default class TimetableComponent extends Component {
-  constructor(htmlElement: HTMLElement, private timetableService: TimetableService) {
+  constructor(
+    htmlElement: HTMLElement,
+    private timetableService: TimetableService
+  ) {
     super(htmlElement);
   }
 
@@ -15,13 +18,11 @@ export default class TimetableComponent extends Component {
   }
 
   public renderToString(): string {
-    const tableRows = TIME_SLOTS
-      .map((time, index) => this.renderTimeRow(time, index))
-      .join('');
+    const tableRows = TIME_SLOTS.map((time, index) => this.renderTimeRow(time)).join('');
 
-    const daysHeader = WORKING_DAYS_OF_WEEK
-      .map(day => `<th class="border p-2 bg-gray-100">${day}</th>`)
-      .join('');
+    const daysHeader = WORKING_DAYS_OF_WEEK.map(
+      (day) => `<th class="border p-2 bg-gray-100">${day}</th>`
+    ).join('');
 
     return `
             <div class="bg-white p-6 rounded-lg shadow" id=${this.id}>
@@ -44,8 +45,8 @@ export default class TimetableComponent extends Component {
 
   private renderTimeRow = (time: string): string => {
     const timetable = this.timetableService.getSchedule();
-    const cells = WORKING_DAYS_OF_WEEK.map(day => {
-      const lessons = timetable.filter(lsn => lsn.timeSlot == time && lsn.dayOfWeek == day);
+    const cells = WORKING_DAYS_OF_WEEK.map((day) => {
+      const lessons = timetable.filter((lsn) => lsn.timeSlot == time && lsn.dayOfWeek == day);
       return `<td class="border p-2">${this.renderTimeSlot(lessons)}</td>`;
     }).join('');
 
@@ -56,15 +57,21 @@ export default class TimetableComponent extends Component {
             </tr>`;
   };
 
-
   private renderTimeSlot = (lessons: Lesson[]): string => {
-    return lessons.map(lesson => {
-      const classroom = this.timetableService.getClassrooms().find(cls => cls.number == lesson.classroomNumber) ?? null;
-      const professor = this.timetableService.getProfessors().find(prof => prof.id == lesson.professorId) ?? null;
-      const course = this.timetableService.getCourses().find(crs => crs.id == lesson.courseId) ?? null;
+    return lessons
+      .map((lesson) => {
+        const classroom =
+          this.timetableService
+            .getClassrooms()
+            .find((cls) => cls.number == lesson.classroomNumber) ?? null;
+        const professor =
+          this.timetableService.getProfessors().find((prof) => prof.id == lesson.professorId) ??
+          null;
+        const course =
+          this.timetableService.getCourses().find((crs) => crs.id == lesson.courseId) ?? null;
 
-      return `${course?.name} - (${classroom?.number})<br><span class="text-sm text-gray-500">${professor?.name}</span>`;
-    }).join('<hr>')
+        return `${course?.name} - (${classroom?.number})<br><span class="text-sm text-gray-500">${professor?.name}</span>`;
+      })
+      .join('<hr>');
   };
-
 }

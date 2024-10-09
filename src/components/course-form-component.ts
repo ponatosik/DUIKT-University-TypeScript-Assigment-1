@@ -1,14 +1,17 @@
-import { TimetableService } from "../services/timetable-service.js";
-import { COURSE_TYPES, CourseType } from "../types/course-type.js";
-import { Course } from "../types/course.js";
-import Component from "./abstract-component.js";
+import { TimetableService } from '../services/timetable-service.js';
+import { COURSE_TYPES, CourseType } from '../types/course-type.js';
+import { Course } from '../types/course.js';
+import Component from './abstract-component.js';
 
 export default class CourseFormComponent extends Component {
   private submitButtonId: string = `${this.id}-submit`;
   private courseNameFormId: string = `${this.id}-name`;
   private courseTypeFormId: string = `${this.id}-type`;
 
-  constructor(htmlElement: HTMLElement, private timetableService: TimetableService) {
+  constructor(
+    htmlElement: HTMLElement,
+    private timetableService: TimetableService
+  ) {
     super(htmlElement);
   }
 
@@ -33,7 +36,7 @@ export default class CourseFormComponent extends Component {
       id: id,
       name: courseNameForm.value,
       type: courseTypeForm.value as CourseType
-    }
+    };
 
     this.timetableService.addCourse(course);
   }
@@ -50,7 +53,7 @@ export default class CourseFormComponent extends Component {
                   <div>
                         <label class="block text-sm font-medium mb-1" for="${this.courseTypeFormId}">Course Type</label>
                             <select id="${this.courseTypeFormId}" class="w-full p-2 border rounded">
-                              ${COURSE_TYPES.map(type => `<option>${type}</option>`).join('')}
+                              ${COURSE_TYPES.map((type) => `<option>${type}</option>`).join('')}
                             </select>
                     </div>
 
@@ -61,4 +64,3 @@ export default class CourseFormComponent extends Component {
             </div>`;
   }
 }
-

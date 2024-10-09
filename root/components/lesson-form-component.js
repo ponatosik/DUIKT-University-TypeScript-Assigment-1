@@ -1,6 +1,6 @@
-import Component from "./abstract-component.js";
-import { WORKING_DAYS_OF_WEEK } from "../types/day-of-week.js";
-import { TIME_SLOTS } from "../types/time-slot.js";
+import Component from './abstract-component.js';
+import { WORKING_DAYS_OF_WEEK } from '../types/day-of-week.js';
+import { TIME_SLOTS } from '../types/time-slot.js';
 export default class LessonFormComponent extends Component {
     timetableService;
     modal;
@@ -34,7 +34,7 @@ export default class LessonFormComponent extends Component {
             professorId: parseInt(lessonProfessorId.value),
             classroomNumber: lessonRoomId.value,
             dayOfWeek: lessonDay.value,
-            timeSlot: lessonTime.value,
+            timeSlot: lessonTime.value
         };
         const lessonConflict = this.timetableService.validateLesson(lesson);
         if (lessonConflict) {
@@ -45,7 +45,9 @@ export default class LessonFormComponent extends Component {
     }
     handleSceduleConflict(confilict) {
         const lesson = confilict.lessonDetatil;
-        const professor = this.timetableService.getProfessors().find(prof => prof.id == lesson.professorId);
+        const professor = this.timetableService
+            .getProfessors()
+            .find((prof) => prof.id == lesson.professorId);
         const meessage = `
         ${confilict.type} for lesson
         at ${lesson.dayOfWeek} (${lesson.timeSlot}),
@@ -54,21 +56,20 @@ export default class LessonFormComponent extends Component {
         this.modal.showMessage(meessage);
     }
     renderToString() {
-        const renderedCoursesOptions = this.timetableService.getCourses()
-            .map(course => `<option value="${course.id}">${course.name}</option>`)
+        const renderedCoursesOptions = this.timetableService
+            .getCourses()
+            .map((course) => `<option value="${course.id}">${course.name}</option>`)
             .join('');
-        const renderedClassroomsOptions = this.timetableService.getClassrooms()
-            .map(cls => `<option>${cls.number}</option>`)
+        const renderedClassroomsOptions = this.timetableService
+            .getClassrooms()
+            .map((cls) => `<option>${cls.number}</option>`)
             .join('');
-        const renderedProfessorsOptions = this.timetableService.getProfessors()
-            .map(professor => `<option value="${professor.id}">${professor.name}</option>`)
+        const renderedProfessorsOptions = this.timetableService
+            .getProfessors()
+            .map((professor) => `<option value="${professor.id}">${professor.name}</option>`)
             .join('');
-        const renderedDaysOptions = WORKING_DAYS_OF_WEEK
-            .map(day => `<option>${day}</option>`)
-            .join('');
-        const renderedTimeOptions = TIME_SLOTS
-            .map(time => `<option>${time}</option>`)
-            .join('');
+        const renderedDaysOptions = WORKING_DAYS_OF_WEEK.map((day) => `<option>${day}</option>`).join('');
+        const renderedTimeOptions = TIME_SLOTS.map((time) => `<option>${time}</option>`).join('');
         return `
             <div class="bg-white p-6 rounded-lg shadow" id="${this.id}">
                 <h2 class="text-xl font-semibold mb-4">Add Lesson</h2>

@@ -1,4 +1,4 @@
-import Component from "./abstract-component.js";
+import Component from './abstract-component.js';
 export default class ModalWindowComponent extends Component {
     closeButtonId = `${this.id}-submit`;
     modalContentId = `${this.id}-text`;

@@ -1,5 +1,5 @@
-import { COURSE_TYPES } from "../types/course-type.js";
-import Component from "./abstract-component.js";
+import { COURSE_TYPES } from '../types/course-type.js';
+import Component from './abstract-component.js';
 export default class CourseFormComponent extends Component {
     timetableService;
     submitButtonId = `${this.id}-submit`;
@@ -40,7 +40,7 @@ export default class CourseFormComponent extends Component {
                   <div>
                         <label class="block text-sm font-medium mb-1" for="${this.courseTypeFormId}">Course Type</label>
                             <select id="${this.courseTypeFormId}" class="w-full p-2 border rounded">
-                              ${COURSE_TYPES.map(type => `<option>${type}</option>`).join('')}
+                              ${COURSE_TYPES.map((type) => `<option>${type}</option>`).join('')}
                             </select>
                     </div>
 

@@ -1,6 +1,1 @@
-export const COURSE_TYPES = [
-    "Lecture",
-    "Seminar",
-    "Lab",
-    "Practice"
-];
+export const COURSE_TYPES = ['Lecture', 'Seminar', 'Lab', 'Practice'];

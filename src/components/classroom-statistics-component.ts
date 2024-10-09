@@ -1,9 +1,12 @@
-import { TimetableService } from "../services/timetable-service.js";
-import { Classroom } from "../types/classroom.js";
-import Component from "./abstract-component.js";
+import { TimetableService } from '../services/timetable-service.js';
+import { Classroom } from '../types/classroom.js';
+import Component from './abstract-component.js';
 
 export default class ClassroomFormComponent extends Component {
-  constructor(htmlElement: HTMLElement, private timetableService: TimetableService) {
+  constructor(
+    htmlElement: HTMLElement,
+    private timetableService: TimetableService
+  ) {
     super(htmlElement);
   }
 
@@ -14,7 +17,9 @@ export default class ClassroomFormComponent extends Component {
 
   public renderToString(): string {
     const classrooms = this.timetableService.getClassrooms();
-    const classroomSections = classrooms.map(room => this.renderClassromStatistic(room)).join('\n');
+    const classroomSections = classrooms
+      .map((room) => this.renderClassromStatistic(room))
+      .join('\n');
 
     return `
             <div class="bg-white p-6 rounded-lg shadow" id="${this.id}">

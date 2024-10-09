@@ -1,5 +1,5 @@
-import { DayOfWeek } from "./day-of-week.js"
-import { TimeSlot } from "./time-slot.js"
+import { DayOfWeek } from './day-of-week.js';
+import { TimeSlot } from './time-slot.js';
 
 export type Lesson = {
   courseId: number;
@@ -7,4 +7,4 @@ export type Lesson = {
   classroomNumber: string;
   dayOfWeek: DayOfWeek;
   timeSlot: TimeSlot;
-}
+};

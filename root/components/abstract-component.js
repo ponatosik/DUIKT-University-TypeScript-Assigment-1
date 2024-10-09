@@ -1,11 +1,11 @@
 export default class Component {
     htmlElement;
-    get id() { return this._id; }
-    ;
+    get id() {
+        return this._id;
+    }
     update() {
         this.render();
     }
-    ;
     constructor(htmlElement) {
         this.htmlElement = htmlElement;
     }
