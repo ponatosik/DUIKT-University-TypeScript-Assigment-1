@@ -41,3 +41,10 @@ This repository contains the homework assignment for the TypeScript course at [D
 - Install and configure Pretier
 - Install and configure ESLint
 - Install Husky and configure lint-staged
+
+
+## Task 4 (modules)
+
+- Move code from Task 2 to a new 'feature/modules' branch
+- Split .ts code into logical modules in separate folders. Move types to a separate file and folder.
+-  Connect all modules in main.ts. Import dependent modules/types as needed.
