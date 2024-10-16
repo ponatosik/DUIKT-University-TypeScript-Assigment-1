@@ -1,5 +1,5 @@
-import { ServicePlan } from './servicePlan';
-import { PopupModal } from './popupModal';
+import { ServicePlan } from '../types/servicePlan.js';
+import { PopupModal } from './popupModal.js';
 
 export class ServicePlanCard {
   constructor(servicePlan: ServicePlan, card: HTMLElement, popupModal: PopupModal) {

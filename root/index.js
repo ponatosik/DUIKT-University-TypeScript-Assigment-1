@@ -1,6 +1,6 @@
-import { Carousel } from './carousel';
-import { PopupModal } from './popupModal';
-import { ServicePlanCard } from './servicePlanCard';
+import { Carousel } from './components/carousel.js';
+import { PopupModal } from './components/popupModal.js';
+import { ServicePlanCard } from './components/servicePlanCard.js';
 // Carousel functionality
 const prevButton = document.getElementById('prev');
 const nextButton = document.getElementById('next');
