@@ -8,7 +8,7 @@ const prevButton = document.getElementById('prev') as HTMLElement;
 const nextButton = document.getElementById('next') as HTMLElement;
 const carouselElement = document.querySelector('#carousel .flex') as HTMLElement;
 
-const carousel = new Carousel(carouselElement, prevButton, nextButton, 5);
+new Carousel(carouselElement, prevButton, nextButton, 5);
 
 // Popup modal functionality
 const popupModal = document.getElementById('popupModal') as HTMLElement;
@@ -26,7 +26,7 @@ const servicePlanElements: HTMLElement[] = [
 ];
 
 // Fetch service plan data
-const cards = fetch(
+fetch(
   'https://raw.githubusercontent.com/ponatosik/DUIKT-University-TypeScript-Assigments/feature/tsconfig/mockData/servicePlans.json'
 )
   .then(async (res) => res.json())

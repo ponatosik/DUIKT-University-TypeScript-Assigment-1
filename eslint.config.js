@@ -9,7 +9,7 @@ export default tseslint.config(
   },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts}'],
+    files: ['src/**/*.ts'],
     languageOptions: {
       ecmaVersion: 2022,
       globals: { ...globals.browser },
@@ -23,6 +23,7 @@ export default tseslint.config(
     },
     rules: {
       'prettier/prettier': 'error',
+      '@typescript-eslint/explicit-function-return-type': 'error',
       'no-console': 'warn',
       'prefer-const': 'warn'
     }
