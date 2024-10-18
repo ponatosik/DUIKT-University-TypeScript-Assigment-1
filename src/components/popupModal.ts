@@ -7,12 +7,12 @@ export class PopupModal {
     closeModal.addEventListener('click', () => this.hideModal());
   }
 
-  public showMessage(message: string) {
+  public showMessage(message: string): void {
     this.popupMessage.innerHTML = message;
     this.popupModal.classList.remove('hidden');
   }
 
-  public hideModal() {
+  public hideModal(): void {
     this.popupModal.classList.add('hidden');
   }
 }

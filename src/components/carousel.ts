@@ -11,12 +11,12 @@ export class Carousel {
     prevButton.addEventListener('click', () => this.prevSlide());
   }
 
-  nextSlide() {
+  public nextSlide(): void {
     this.index = (this.index + 1) % this.slides;
     this.carousel.style.transform = `translateX(-${this.index * 100}%)`;
   }
 
-  prevSlide() {
+  public prevSlide(): void {
     this.index = (this.index - 1 + this.slides) % this.slides;
     this.carousel.style.transform = `translateX(-${this.index * 100}%)`;
   }
