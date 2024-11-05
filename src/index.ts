@@ -1,36 +1,38 @@
-import { Carousel } from './carousel';
-import { PopupModal } from './popupModal';
-import { ServicePlan } from './servicePlan';
-import { ServicePlanCard } from './servicePlanCard';
+// Find product by id
+export const findProduct = <T extends BaseProduct>(products: T[], id: number): T | undefined => {
+  return products.find((product) => product.id === id);
+};
 
-// Carousel functionality
-const prevButton = document.getElementById('prev') as HTMLElement;
-const nextButton = document.getElementById('next') as HTMLElement;
-const carouselElement = document.querySelector('#carousel .flex') as HTMLElement;
+// Filter products by price
+export const filterByPrice = <T extends BaseProduct>(products: T[], maxPrice: number): T[] => {
+  return products.filter((product) => product.price <= maxPrice);
+};
 
-new Carousel(carouselElement, prevButton, nextButton, 5);
+// Add product to cart if product is not already in cart
+export const addToCart = <T extends BaseProduct>(
+  cart: CartItem<T>[],
+  product: T,
+  quantity: number
+): CartItem<T>[] => {
+  // Check if quantity is positive integer
+  if (!Number.isSafeInteger(quantity)) throw new Error('Quantity must be integer');
+  if (quantity < 1) throw new Error('Quantity must be greater than 0');
+  if (cart.some((item) => item.product.id === product.id))
+    throw new Error('Product already in cart');
 
-// Popup modal functionality
-const popupModal = document.getElementById('popupModal') as HTMLElement;
-const popupContent = document.getElementById('popupContent') as HTMLElement;
-const closeModal = document.getElementById('closeModal') as HTMLElement;
-const popup = new PopupModal(popupModal, popupContent, closeModal);
+  const item = {
+    product: product,
+    quantity: quantity
+  };
 
-const contactButton = document.getElementById('contactButton') as HTMLElement;
-contactButton.addEventListener('click', () => popup.showMessage('Email: example.com'));
+  cart.push(item);
+  return cart;
+};
 
-const servicePlanElements: HTMLElement[] = [
-  document.getElementById('servicePlan-1') as HTMLElement,
-  document.getElementById('servicePlan-2') as HTMLElement,
-  document.getElementById('servicePlan-3') as HTMLElement
-];
-
-// Fetch service plan data
-fetch(
-  'https://raw.githubusercontent.com/ponatosik/DUIKT-University-TypeScript-Assigments/feature/tsconfig/mockData/servicePlans.json'
-)
-  .then(async (res) => res.json())
-  .then((objs) => objs as ServicePlan[])
-  .then((plans) =>
-    plans.map((value, index) => new ServicePlanCard(value, servicePlanElements[index]!, popup))
+// Calculate total of all products in cart
+export const calculateTotal = <T extends BaseProduct>(cart: CartItem<T>[]): number => {
+  return cart.reduce(
+    (sum: number, item: CartItem<T>) => sum + item.product.price * item.quantity,
+    0
   );
+};

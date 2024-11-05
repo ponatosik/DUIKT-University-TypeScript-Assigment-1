@@ -24,8 +24,11 @@ export default tseslint.config(
     rules: {
       'prettier/prettier': 'error',
       '@typescript-eslint/explicit-function-return-type': 'error',
+      '@typescript-eslint/no-unused-vars': 'off',
       'no-console': 'warn',
-      'prefer-const': 'warn'
+      'prefer-const': 'warn',
+      'no-unused-expressions': 'off',
+      'no-unused-vars': 'off'
     }
   }
 );
