@@ -1,0 +1,1 @@
+type ProductValidator = Validator<Product>;

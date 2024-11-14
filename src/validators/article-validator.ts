@@ -1,0 +1,1 @@
+type ArticleValidator = Validator<Article>;
