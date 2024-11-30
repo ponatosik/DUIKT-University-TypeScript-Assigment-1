@@ -135,6 +135,19 @@ class UniversityManagementSystem {
   // Updates student's status
   public updateStudentStatus(studentId: number, newStatus: StudentStatus): void {
     const student = this.findStudentById(studentId);
+    const averageGrade = this.calculateAverageGrade(studentId);
+
+    if (student.status == StudentStatus.Graduated)
+      throw new Error(`Student with id ${studentId} is already graduated`);
+
+    if (newStatus == StudentStatus.Graduated && averageGrade <= 2)
+      throw new Error(`Average grade for student with id ${studentId} is too low to graduate`);
+
+    const finishedCourses = this.studentGrades.filter((grade) => grade.studentId == student.id);
+    const registeredCourses = this.courseRegistrations.filter((reg) => reg.studentId == student.id);
+    if (finishedCourses.length > registeredCourses.length)
+      throw new Error(`Student with id ${studentId} has unfinished courses`);
+
     student.status = newStatus;
   }
 
